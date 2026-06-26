@@ -27,7 +27,7 @@ Email Validation Regex
 #### Register User
 
 - Validate - name, email, password - with Mongoose
-- Hash Password (with bcryptjs)
+- Hash Password (with bcrypt)
 - Save User
 - Generate Token
 - Send Response with Token
@@ -46,24 +46,3 @@ Email Validation Regex
 
 - Validation Errors
 - Duplicate (Email)
-- Cast Error
-
-#### Security
-
-- helmet
-- cors
-- xss-clean
-- express-rate-limit
-
-Swagger UI
-
-```yaml
-/jobs/{id}:
-  parameters:
-    - in: path
-      name: id
-      schema:
-        type: string
-      required: true
-      description: the job id
-```
