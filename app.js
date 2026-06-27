@@ -3,6 +3,11 @@ require('express-async-errors');
 const express = require('express');
 const app = express();
 
+//swagger
+const swaggerUI = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml')
+
 //db
 const connectDB = require('./db/connect');
 
@@ -25,8 +30,9 @@ app.use(express.json());
 app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/jobs', auth, jobRouter);
 app.get('/', (req, res) => {
-  res.send('jobs api');
+  res.send('<h3>Jobs Api</h3><a href="api-docs">Documentation</a>');
 });
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
