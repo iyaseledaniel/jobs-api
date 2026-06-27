@@ -1,5 +1,6 @@
 const { BadRequestError, ConflictError } = require("../errors");
 const jobModel = require("../models/Job");
+const format = require("./formatter");
 
 const createJobService = async (jobData, userid) => {
     const { company, position } = jobData;
