@@ -7,8 +7,8 @@ const format = require('../services/formatter')
 
 const createJob = asyncWrapper(async (req, res, next) => {
     const userid = req.user.id
-    const jobCreated = await createJobService(req.body, userid)
-    res.status(StatusCodes.CREATED).json({ msg: 'Job created', jobCreated });
+    const {formattedJob: job} = await createJobService(req.body, userid)
+    res.status(StatusCodes.CREATED).json({ msg: 'Job created', job });
 });
 
 

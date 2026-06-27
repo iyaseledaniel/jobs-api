@@ -20,7 +20,8 @@ const createJobService = async (jobData, userid) => {
         createdBy: userid
     });
     const jobCreated = await jobModel.create(newJob);
+    const formattedJob = format(jobCreated);
 
-    return jobCreated
+    return {formattedJob}
 }
 module.exports = createJobService;
